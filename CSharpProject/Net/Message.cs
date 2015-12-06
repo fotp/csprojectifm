@@ -24,7 +24,7 @@ namespace CSharpProject.Net
 
         public string debug()
         {
-            return head.ToString() + ":" + data.ToString();
+            return head.ToString() + ":" + data; //data est déjà du type string
         }
 
         public Message(Header head, List<string> data)
