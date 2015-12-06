@@ -84,6 +84,7 @@
     <Compile Include="Net\Header.cs" />
     <Compile Include="Net\Message.cs" />
     <Compile Include="Net\MessageConnection.cs" />
+    <Compile Include="Net\TCPClient.cs" />
     <Compile Include="Net\TCPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
