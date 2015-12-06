@@ -39,6 +39,13 @@ namespace CSharpProject.Net
             set{_ns = value;}
         }
 
+        public TCPClient (IPAddress ip, int port)
+        {
+            this.ip = ip;
+            this.port = port;
+            commSocket = new TcpClient();
+        }
+
         public void setServer(IPAddress ip, int port)
         {
             this.ip = ip;
