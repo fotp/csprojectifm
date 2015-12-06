@@ -17,7 +17,7 @@ namespace CSharpProject
         static void Main(string[] args)
          {
             /// AUTHENTIFICATION       
-            
+            /*
             AuthentificationManager am = new Authentification();
 
             am.addUser("bob", "123");
@@ -43,7 +43,7 @@ namespace CSharpProject
             //am.authentify("marc", "123456");
             
 
-
+            */
             //CHAT
             /*
              Chatter bob = new TextChatter("Bob");

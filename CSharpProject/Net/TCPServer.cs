@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSharpProject.Net
 {
+    
     abstract class TCPServer : ICloneable, MessageConnection
     {
 
@@ -131,31 +133,17 @@ namespace CSharpProject.Net
             return null;
         }
 
-        public void send(Message m, NetworkStream ns)
-        {
-
-        }
-        public Message receive(NetworkStream ns)
-        {
-            if (ns.CanRead)
-            {
-                Message m = new Message();
-                return m;
-            }
-            else
-            {
-                return new Message(new Header(Header.MsgType.ACK_ERROR), new List<string>() { "error" });
-            }
-        }
+        
 
         public Message getMessage()
         {
-            throw new NotImplementedException();
+            Message msg = Message.Receive(ns);
+            return msg;
         }
 
         public void sendMessage(Message msg)
         {
-            throw new NotImplementedException();
+            Message.Send(msg, ns);
         }
     }
 }
