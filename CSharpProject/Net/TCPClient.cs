@@ -15,7 +15,7 @@ namespace CSharpProject.Net
         int _port;
         NetworkStream _ns;
 
-        public TcpClient CommSocket
+        public TcpClient commSocket
         {
             get { return _commSocket; }
             set { _commSocket = value; }
@@ -27,7 +27,7 @@ namespace CSharpProject.Net
             set {_ip = value;}
         }
 
-        public int Port
+        public int port
         {
             get{ return _port; }
             set{ _port = value;}
@@ -37,6 +37,18 @@ namespace CSharpProject.Net
         {
             get{return _ns;}
             set{_ns = value;}
+        }
+
+        public void setServer(IPAddress ip, int port)
+        {
+            this.ip = ip;
+            this.port = port;
+        }
+
+        public void connect()
+        {
+            commSocket.Connect(ip, port);
+            ns = commSocket.GetStream();
         }
 
         public Message getMessage()

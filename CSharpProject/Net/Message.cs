@@ -15,7 +15,6 @@ namespace CSharpProject.Net
         public List<string> data
         {
             get { return _data; }
-            //test
             set { _data = value; }
         }
 
