@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CSharpProject.Net
 {
     [Serializable]
-    public class Message
+    public class Message : ISerializable
     {
         List<string> _data;
         Header _head;
@@ -24,7 +26,7 @@ namespace CSharpProject.Net
 
         public string debug()
         {
-            return head.ToString() + ":" + data.ToString();
+            return head.ToString() + ":" + data; //data est déjà une liste de string donc pas besoin de .ToString()
         }
 
         public Message(Header head, List<string> data)
@@ -39,7 +41,37 @@ namespace CSharpProject.Net
             data = new List<string>();
         }
 
+        public static void Send(Message m, NetworkStream ns)
+        {
+            BinaryFormatter binaryF = new BinaryFormatter();
+            try
+            {
+                binaryF.Serialize(ns, m);
+                ns.Flush();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        public static Message Receive(NetworkStream ns)
+        {
+            BinaryFormatter binaryF = new BinaryFormatter();
+            Message msg = null;
+            try
+            {
+                msg = (Message)binaryF.Deserialize(ns);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return msg;
+        }
 
-       
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

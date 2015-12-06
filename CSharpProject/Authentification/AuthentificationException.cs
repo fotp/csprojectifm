@@ -23,7 +23,6 @@ namespace CSharpProject.authentification
     {
         public UserExistsException(string login) : base(login)
         {
-       
         }
     }
 
