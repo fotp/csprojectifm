@@ -15,6 +15,7 @@ namespace CSharpProject.Net
         public List<string> data
         {
             get { return _data; }
+            //test
             set { _data = value; }
         }
 
@@ -26,7 +27,7 @@ namespace CSharpProject.Net
 
         public string debug()
         {
-            return head.ToString() + ":" + data; //data est déjà une liste de string donc pas besoin de .ToString()
+            return head.ToString() + ":" + data; //data est déjà du type string
         }
 
         public Message(Header head, List<string> data)
@@ -68,7 +69,7 @@ namespace CSharpProject.Net
             }
             return msg;
         }
-
+       
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             throw new NotImplementedException();
